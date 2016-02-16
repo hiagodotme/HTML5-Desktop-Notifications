@@ -80,11 +80,24 @@
                 */
                 tag: options.tag || emptyString
             });
+            
+            notification.onclick = options.onclick || function(){};
+            notification.onclose = options.onclose || function(){};
+            notification.onerror = options.onerror || function(){};
+            notification.ondisplay = options.ondisplay || function(){};
         } else if (win.webkitNotifications) { /* FF with html5Notifications plugin installed */
             notification = win.webkitNotifications.createNotification(options.icon, title, options.body);
+            notification.onclick = options.onclick || function(){};
+            notification.onclose = options.onclose || function(){};
+            notification.onerror = options.onerror || function(){};
+            notification.ondisplay = options.ondisplay || function(){};
             notification.show();
         } else if (navigator.mozNotification) { /* Firefox Mobile */
             notification = navigator.mozNotification.createNotification(title, options.body, options.icon);
+            notification.onclick = options.onclick || function(){};
+            notification.onclose = options.onclose || function(){};
+            notification.onerror = options.onerror || function(){};
+            notification.ondisplay = options.ondisplay || function(){};
             notification.show();
         } else if (win.external && win.external.msIsSiteMode()) { /* IE9+ */
             //Clear any previous notifications
